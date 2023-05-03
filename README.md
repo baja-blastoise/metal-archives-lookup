@@ -28,37 +28,47 @@ Ensure you have the listed dependencies installed, then copy *malookup.py* into 
 
   *bprint* - True/False, controls whether output is also printed to terminal.  Useful for bot applications.  Defaults to False if unspecified.
     
-BANDLOOKUP('Bolt Thrower')
-
-BANDLOOKUP('Bloodbath', 233, True)
+  ```
+  BANDLOOKUP('Bolt Thrower')
+  BANDLOOKUP('Bloodbath', 233, True)
+  ```
 
 **DISCOGLOOKUP**(*band name*, *band number*, *disctype*, *bprint*)
     
-    *disctype* - discography filter: complete, main, live, demo, misc (defaults to main if not entered manually)
+  *disctype* - discography filter: complete, main, live, demo, misc (defaults to main if not entered manually)
     
-    DISCOGLOOKUP('Blood Incantation')
-    DISCOGLOOKUP('Wraith', 3540437153, 'complete', True)
+  ```
+  DISCOGLOOKUP('Blood Incantation')
+  DISCOGLOOKUP('Wraith', 3540437153, 'complete', True)
+  ```
     
+**MEMBERLOOKUP**(*band name*, *band number*, *membertype*, *bprint*)
     
-**MEMBERLOOKUP**(*band name*, *band number*, membertype, *bprint*)
-    
-    *membertype* - discography filter: current, Last known, Current (live), Past, Past (live), (defaults to Current/Last known if not entered manually)
-    
-    MEMBERLOOKUP('Revocation')
-    MEMBERLOOKUP('Cannibal Corpse', 0, 'Past', True)
-    
+  *membertype* - discography filter: current, Last known, Current (live), Past, Past (live), (defaults to Current/Last known if not entered manually)
+  
+  ```
+  MEMBERLOOKUP('Revocation')
+  MEMBERLOOKUP('Cannibal Corpse', 0, 'Past', True)
+  ```
+  
 **SIMILAR**(*band name*, *band number*, *bprint*)
-    
-    SIMILAR('High on Fire')
-     
+  
+  ```
+  SIMILAR('High on Fire')
+  ```
+  
 **ARTISTLOOKUP**(*artist name*, *artist number*, *bprint*)
- 
-    ARTIST('David Davidson', ###, False)
-     
+  
+  ```
+  ARTIST('David Davidson', ###, False)
+  ```
+  
 **ALBUMLOOKUP**(*band name*, *album name*, *album number*, *bprint*)
-
-    ALBUMLOOKUP('Baest', 'Necro Sapiens', ###, True)
-
+  
+  ```
+  ALBUMLOOKUP('Baest', 'Necro Sapiens', ###, True)
+  ```
+  
 ## Dependencies
 This library has the following dependencies:
 1. **Requests** - Used to scrape text from Metal Archives pages.
