@@ -1,6 +1,8 @@
 # metal-archives-lookup
 A python library for scraping information from the [Metal Archives](https://www.metal-archives.com/) and returning it in formatted text.  Useful for things like IRC or Discord bots.
 
+I would consider this an alpha level release.  Web scraping is an inexact process and the Metal Archives is filled with 20 years of submissions of varying quality.  Please send the search parameters my way if you encounter unexpected results.
+
 ## Uses
 This library has functions that search for band, artist, or album pages based on name.  It returns formatted text, usually in the form of a table.  I developed this library for use with an IRC or Discord bot.  Each function scrapes a specific URL based on band/album/artist name input.  The functions return information as a string, and can be configured to also output the text straight to the console.  This feature is useful when using the library as part of a bot, so the bot's output can be monitored from the client side.
 
@@ -26,35 +28,36 @@ Ensure you have the listed dependencies installed, then copy *malookup.py* into 
 
   *bprint* - True/False, controls whether output is also printed to terminal.  Useful for bot applications.  Defaults to False if unspecified.
     
-'BANDLOOKUP('Bolt Thrower')'
-'BANDLOOKUP('Bloodbath', 233, True)'
+BANDLOOKUP('Bolt Thrower')
 
-**DISCOGLOOKUP**(*band name*, *band number*, disctype, *bprint*)
-    
-    *band name* - name of target band in string format, can include spaces but should not include special characters.  When in doubt, use the format in the address of the bands page on the archives.
-    
-    *band number* - archive number, only necessary for disambiguation purposes, can be left blank otherwise
+BANDLOOKUP('Bloodbath', 233, True)
+
+**DISCOGLOOKUP**(*band name*, *band number*, *disctype*, *bprint*)
     
     *disctype* - discography filter: complete, main, live, demo, misc (defaults to main if not entered manually)
     
-    *bprint* - True/False, controls whether output is also printed to terminal.  Useful for bot applications.  Defaults to False if unspecified.
-    
-    'DISCOGLOOKUP('Blood Incantation')'
-    'DISCOGLOOKUP('Wraith', 3540437153, 'complete', True)'
+    DISCOGLOOKUP('Blood Incantation')
+    DISCOGLOOKUP('Wraith', 3540437153, 'complete', True)
     
     
 **MEMBERLOOKUP**(*band name*, *band number*, membertype, *bprint*)
     
-    *band name* - name of target band in string format, can include spaces but should not include special characters.  When in doubt, use the format in the address of the bands page on the archives.
-    
-    *band number* - archive number, only necessary for disambiguation purposes, can be left blank otherwise
-    
     *membertype* - discography filter: current, Last known, Current (live), Past, Past (live), (defaults to Current/Last known if not entered manually)
     
-    *bprint* - True/False, controls whether output is also printed to terminal.  Useful for bot applications.  Defaults to False if unspecified.
+    MEMBERLOOKUP('Revocation')
+    MEMBERLOOKUP('Cannibal Corpse', 0, 'Past', True)
     
-    'MEMBERLOOKUP('Revocation')
-    'MEMBERLOOKUP('Cannibal Corpse', 0, 'Past', True)'
+**SIMILAR**(*band name*, *band number*, *bprint*)
+    
+    SIMILAR('High on Fire')
+     
+**ARTISTLOOKUP**(*artist name*, *artist number*, *bprint*)
+ 
+    ARTIST('David Davidson', ###, False)
+     
+**ALBUMLOOKUP**(*band name*, *album name*, *album number*, *bprint*)
+
+    ALBUMLOOKUP('Baest', 'Necro Sapiens', ###, True)
 
 ## Dependencies
 This library has the following dependencies:
