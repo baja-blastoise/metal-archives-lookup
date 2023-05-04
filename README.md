@@ -60,13 +60,13 @@ Ensure you have the listed dependencies installed, then copy *malookup.py* into 
 **ARTISTLOOKUP**(*artist name*, *artist number*, *bprint*)
   
   ```
-  ARTIST('David Davidson', ###, False)
+  ARTISTLOOKUP('David Davidson',  3493, False)
   ```
   
 **ALBUMLOOKUP**(*band name*, *album name*, *album number*, *bprint*)
   
   ```
-  ALBUMLOOKUP('Baest', 'Necro Sapiens', ###, True)
+  ALBUMLOOKUP('Baest', 'Necro Sapiens', 914697, True)
   ```
   
 ## Dependencies
