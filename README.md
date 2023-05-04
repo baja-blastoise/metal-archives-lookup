@@ -1,5 +1,5 @@
 # metal-archives-lookup
-A python library for scraping information from the [Metal Archives](https://www.metal-archives.com/) and returning it in formatted text.  Useful for things like IRC or Discord bots.
+A python library for scraping information from the [Metal Archives](https://www.metal-archives.com/) and returning it in formatted text.  Useful for things like IRC or Discord bots like the [Hesher IRC Bot](https://github.com/baja-blastoise/hesher-irc-bot).
 
 I would consider this an alpha level release.  Web scraping is an inexact process and the Metal Archives is filled with 20 years of submissions of varying quality.  Please send the search parameters my way if you encounter unexpected results.
 
