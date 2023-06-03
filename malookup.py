@@ -384,18 +384,20 @@ def DISCOGLOOKUP(bandname, bandnumber=0, disctype='main', bprint=0):
         TYPE = []
         YEAR = []
         REVIEW = []
-        discog_data = page2.text
-        album_list = discog_data.split('<tr>\n<td>')
+        discog_data = BeautifulSoup(page2.content, "html.parser")
+        album_list = discog_data.text.split('\n\n\n')
         for index, x in enumerate(album_list):
-            if album_list[index].find("<a href=") != -1:
-                temp_list = album_list[index].split('>')
-                NAME.append(temp_list[1][:-3])
-                TYPE.append(temp_list[4][:-4])
-                YEAR.append(temp_list[6][:-4])
-                REVIEW.append(temp_list[9][:-3])
+            text = album_list[index].strip()
+            if len(text) != 0 and text.find('Name\nType\nYear\nReviews') == -1:
+                temp_list = text.split('\n')
+                NAME.append(temp_list[0])
+                TYPE.append(temp_list[1])
+                YEAR.append(temp_list[2])
                 # fix when album has no reviews
-                if REVIEW[index-1].find('<') != -1:
-                    REVIEW[index-1] = 'no reviews'
+                if len(temp_list) >= 4:
+                    REVIEW.append(temp_list[4])
+                else:
+                    REVIEW.append("no reviews")
         # put results in a table
         disc_table = PrettyTable()
         disc_table.add_column("Name", NAME)
