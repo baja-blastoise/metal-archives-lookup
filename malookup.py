@@ -1352,3 +1352,43 @@ def BAND404(raw_text, bprint=0):
         return True
     else:
         return False
+
+def RANDOM(bprint=0):
+    try:
+        url = "https://www.metal-archives.com/band/random"
+        page = requests.get(url)
+        id_start = page.text.find("var bandId") + 13
+        id_end = page.text[id_start:-1].find("\n") - 1
+        band_id = page.text[id_start:(id_start+id_end)].strip()
+        name_start = page.text.find("var bandName") + 15
+        name_end = page.text[name_start:-1].find("\n") - 1
+        band_name = page.text[name_start:(name_start+name_end)].strip()
+    except Exception as e:
+        errormsg = "Something went wrong accessing random band"
+        if bprint:
+            print("Something went wrong accessing random band")
+            print(e)
+            print("error on line {}".format(sys.exc_info()[-1].tb_lineno))
+        return (errormsg)
+            
+    try:
+        band_info_str = BANDLOOKUP(band_name, band_id, bprint)
+    except Exception as e:
+        errormsg = "Something went wrong getting band info for random band"
+        if bprint:
+            print("Something went wrong getting band info for random band")
+            print(e)
+            print("error on line {}".format(sys.exc_info()[-1].tb_lineno))
+        return (errormsg)
+    
+    try:
+        discog_str = DISCOGLOOKUP(band_name, band_id, 'complete', bprint)
+    except Exception as e:
+        errormsg = "Something went wrong getting discography for random band"
+        if bprint:
+            print("Something went wrong getting discography for random band")
+            print(e)
+            print("error on line {}".format(sys.exc_info()[-1].tb_lineno))
+        return (errormsg)
+    final_str = "" + band_info_str + "\n" + discog_str
+    return (final_str)
